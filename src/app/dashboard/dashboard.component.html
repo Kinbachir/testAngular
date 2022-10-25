@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="card" *ngIf="!isMobileMenu()">
+        <mat-grid-list cols="2" rowHeight="5:1">
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Sector</mat-label>
+                    <mat-select (selectionChange)="onSectorChange()" [(value)]="sector">
+                      <mat-option *ngFor="let sector of sectors" [value]="sector">{{sector}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Company</mat-label>
+                    <mat-select (selectionChange)="onCompanyChange()" [(value)]="company">
+                        <mat-option *ngFor="let company of companys" [value]="company">{{company}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+    <div class="card" *ngIf="isMobileMenu()">
+        <mat-form-field appearance="fill">
+            <mat-label>Sector</mat-label>
+            <mat-select (selectionChange)="onSectorChange()" [(value)]="sector">
+                <mat-option *ngFor="let sector of sectors" [value]="sector">{{sector}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Company</mat-label>
+            <mat-select (selectionChange)="onCompanyChange()" [(value)]="company">
+                <mat-option *ngFor="let company of companys" [value]="company">{{company}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <table mat-table matSort  [dataSource]="dataSource" class="mat-elevation-z8 tableSize">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- NAME Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> COMPANY </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- SIREN Column -->
+        <ng-container matColumnDef="siren">
+          <th mat-header-cell *matHeaderCellDef> N° SIREN </th>
+          <td mat-cell *matCellDef="let element"> {{element.siren}} </td>
+        </ng-container>
+      
+        <!-- CATEGORY Column -->
+        <ng-container matColumnDef="CATEGORY">
+          <th mat-header-cell *matHeaderCellDef> CATEGORY </th>
+          <td  *matCellDef="let element"> 
+            <button mat-raised-button type="button" *ngIf="!isMobileMenu()" (click)="Detail(element)" class="btnStyle" [disabled]="busy">{{element.sector}}</button> 
+            <button mat-raised-button type="button" *ngIf="isMobileMenu()" (click)="Detail(element)" class="btnStyleMobile" [disabled]="busy">{{element.sector}}</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+</div>

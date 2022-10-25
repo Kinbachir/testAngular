@@ -1,0 +1,89 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col-2"><i class="material-icons back" [routerLink]="['/dashboard']">arrow_back</i></div>
+        <div class="col-5">
+            <div class="row">
+                <p class="text"><b>Abbott and Sons</b></p>
+            </div>
+            <div class="row">
+                <p>N°SIREN {{siren}}</p>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class=" card col-sm">
+            <div class="card-body">
+                <h2 class="card-title">Chiffre d'affaire</h2>
+                <div class=" card-text">
+                    Montant (en €)
+                    <canvas baseChart 
+                        [datasets]="barChartDataCA"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [colors]="barChartColors"
+                        [chartType]="barChartType">
+                    </canvas>
+                    <p class="textStyle">Année</p>
+                </div>
+              </div>
+          </div>
+          <div class=" card col-sm">
+            <div class="card-body">
+                <h2 class="card-title">EBITDA</h2>
+                <div class=" card-text">
+                    Montant (en €)
+                    <canvas baseChart 
+                        [datasets]="barChartDataEbitda"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [colors]="barChartColors"
+                        [chartType]="barChartType">
+                    </canvas>
+                    <p class="textStyle">Année</p>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class=" card col-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Loss</h2>
+                    <div class=" card-text">
+                        Montant (en €)
+                        <canvas baseChart 
+                        [datasets]="barChartDataLoss"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [colors]="barChartColors"
+                        [plugins]="barChartPlugins"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                    </canvas>
+                        <p class="textStyle">Année</p>
+                    </div>
+                  </div>
+              </div>
+              <div class=" card col-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Margin</h2>
+                    <div class=" card-text">
+                        Montant (en €)
+                        <canvas baseChart 
+                        [datasets]="barChartDataMargin"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [plugins]="barChartPlugins"
+                        [colors]="barChartColors"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                    </canvas>
+                        <p class="textStyle">Année</p>
+                    </div>
+                  </div>
+              </div>
+          </div>
+  </div>
